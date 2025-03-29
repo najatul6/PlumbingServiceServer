@@ -30,8 +30,9 @@ async function run() {
     
     await client.connect(); // TODO: Delete Line 
 
+    const databaseConnect=client.db("PlumbingService")
     // Create a database and collection
-    const usersCollection = client.db("BasicTemplate").collection("users");
+    const usersCollection = databaseConnect.collection("users");
 
     // JWT
     app.post("/jwt", async (req, res) => {
