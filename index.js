@@ -9,7 +9,7 @@ const uri = process.env.MONGODB_URI;
 app.use(express.json());
 app.use(
   cors({
-    origin: "http://localhost:5173", 
+    origin:["https://plumbing-service-client.vercel.app","http://localhost:5173"], 
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })
@@ -27,8 +27,8 @@ const client = new MongoClient(uri, {
 async function run() {
   try {
     // Connect the client to the server	(optional starting in v4.7)
-    // TODO: Delete 31 Number Line 
-    await client.connect();
+    
+    await client.connect(); // TODO: Delete Line 
 
     // Create a database and collection
     const usersCollection = client.db("BasicTemplate").collection("users");
